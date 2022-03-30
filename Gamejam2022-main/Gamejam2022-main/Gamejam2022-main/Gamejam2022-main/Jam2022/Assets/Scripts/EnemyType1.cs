@@ -130,7 +130,7 @@ public class EnemyType1 : Character
     }
 
     private IEnumerator ChangeMove()
-    {
+        {
         moveFlag = Random.Range(-1, 1);
 
         if (moveFlag == 0)
@@ -142,7 +142,7 @@ public class EnemyType1 : Character
             //enemyAnimator.SetBool("isMoving", true);
         }
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
 
         StartCoroutine("ChangeMove");
     }
