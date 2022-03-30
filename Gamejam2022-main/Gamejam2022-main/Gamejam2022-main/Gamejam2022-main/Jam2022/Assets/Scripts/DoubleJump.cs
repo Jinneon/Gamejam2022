@@ -49,7 +49,7 @@ public class DoubleJump : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         box = GetComponent<PolygonCollider2D>();
-      //  anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
     public bool ground1;
     // Update is called once per frame
@@ -85,7 +85,7 @@ public class DoubleJump : MonoBehaviour
         if (IsGrounded() && Input.GetButton("Jump"))
         {
 
-            // anim.SetTrigger("takeOF");
+           // anim.SetTrigger("Jump");
             Jump();
         }
         else if (Input.GetButtonDown("Jump") && IsGrounded() == false)
@@ -192,11 +192,11 @@ public class DoubleJump : MonoBehaviour
         }
         if (dirX == 0)
         {
-          //  anim.SetBool("isWalking", false);
+            anim.SetBool("IsWalking", false);
         }
         else
         {
-          //  anim.SetBool("isWalking", true);
+            anim.SetBool("IsWalking", true);
         }
         if (dirX < 0)
         {
@@ -239,8 +239,9 @@ public class DoubleJump : MonoBehaviour
         jumpCounter += 1;
             rb.velocity = new Vector2(rb.velocity.x, 0f);
             rb.velocity = Vector2.up * jumpForce;
-        
-        
+        anim.SetTrigger("Jump");
+
+
     }
     void flip()
     {
