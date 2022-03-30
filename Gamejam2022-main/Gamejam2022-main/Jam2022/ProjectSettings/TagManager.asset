@@ -7,6 +7,7 @@ TagManager:
   - Tile
   - Ground
   - Catfood
+  - Bullet
   layers:
   - Default
   - TransparentFX

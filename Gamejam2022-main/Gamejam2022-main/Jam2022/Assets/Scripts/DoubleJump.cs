@@ -15,16 +15,18 @@ public class DoubleJump : MonoBehaviour
     public float dec = 0.5f;
     public float topSpeed = 20.0f;
     public float airSpeed = 15F;
-    public float acc = 0.0934375f;
-    public float airAcc = 0.04671875f;
+    private float acc = 0.0934375f;
+    private float airAcc = 0.04671875f;
   
-    public float gravity = 1;
-    public float linearDrag = 4f;
-    public float jumpDelay = 0.25f;
-    public float delay = 0.25f;
+    private float gravity = 1;
+    private float linearDrag = 4f;
+    private float jumpDelay = 0.25f;
+    private float delay = 0.25f;
     public float jumpCounter = 0;
-  
-
+    public GameObject player;
+    public Transform startPosition;
+ //   public Transform groundCheck;
+ //   public float groundCRadius;
    
 
     public float fallMultiplier = 5f;
@@ -32,7 +34,7 @@ public class DoubleJump : MonoBehaviour
     
     Rigidbody2D rb;
 
-   public bool doubleJumpAllowed = false;
+  // public bool doubleJumpAllowed = false;
 //   public bool onTheGround = false;
     bool facingRight = true;
     private BoxCollider2D box;
@@ -48,6 +50,10 @@ public class DoubleJump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            player.transform.position = startPosition.transform.position;
+        }
         if (IsGrounded())
         {
             ground1 = true;
@@ -57,9 +63,14 @@ public class DoubleJump : MonoBehaviour
         else
         {
             ground1 = false;
-            doubleJumpAllowed = true;
+          //  doubleJumpAllowed = true;
         }
-       
+      /*  ground1 = Physics2D.OverlapCircle(groundCheck.position, groundCRadius, ground);
+        if (ground1)
+        {
+            jumpCounter = 0;
+        }
+       */
         MoPhysics();
         rb.velocity = new Vector2(dirX, rb.velocity.y);
         if (rb.velocity.y == 0)
@@ -74,14 +85,14 @@ public class DoubleJump : MonoBehaviour
            // anim.SetBool("isJumping", true);
         }
 
-      
+
         if (IsGrounded() && Input.GetButton("Jump"))
         {
-           
-           // anim.SetTrigger("takeOF");
+
+            // anim.SetTrigger("takeOF");
             Jump();
         }
-        else if( Input.GetButtonDown("Jump") && IsGrounded() == false)
+        else if (Input.GetButtonDown("Jump") && IsGrounded() == false)
         {
             
             if(jumpCounter <= 1)
@@ -93,7 +104,7 @@ public class DoubleJump : MonoBehaviour
                 Debug.Log("Can jump only once");
             }
                
-            doubleJumpAllowed = false;
+         //   doubleJumpAllowed = false;
 
 
             //    anim.SetBool("isJumping", true);
@@ -115,7 +126,7 @@ public class DoubleJump : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.A))
         {
             moveSpeed -= dec;
-            StartCoroutine(Decelaration());
+           // StartCoroutine(Decelaration());
         }
 
         if (Input.GetKey(KeyCode.A) && IsGrounded() == false)
@@ -132,6 +143,7 @@ public class DoubleJump : MonoBehaviour
 
         IEnumerator Decelaration()
         {
+            Debug.Log("Now");
             yield return new WaitForSeconds(delay);
             moveSpeed = 5f;
         }
@@ -149,7 +161,7 @@ public class DoubleJump : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.D))
         {
             moveSpeed -= dec;
-            StartCoroutine(Decelaration());
+         //   StartCoroutine(Decelaration());
 
         }
         if (Input.GetKey(KeyCode.D) && IsGrounded() == false)
@@ -190,12 +202,28 @@ public class DoubleJump : MonoBehaviour
         }
     }
     [SerializeField] private LayerMask ground;
+    public float distance = 0.3f;
     private bool IsGrounded()
     {
-     
-       // Debug.Log(jumpCounter);
-   
-       return Physics2D.BoxCast(box.bounds.center, box.bounds.size, 0f, Vector2.down, 0.2f, ground);
+
+        // Debug.Log(jumpCounter);
+
+        // return Physics2D.BoxCast(box.bounds.center, box.bounds.size, 0f, Vector2.down, distance, ground);
+      RaycastHit2D raycastHit =  Physics2D.BoxCast(box.bounds.center,box.bounds.size,0f, Vector2.down, box.bounds.extents.y + distance, ground);
+        Color rayColor;
+        if(raycastHit.collider != null)
+        {
+            rayColor = Color.green;
+        }
+        else
+        {
+            rayColor = Color.red;
+        }
+        Debug.DrawRay(box.bounds.center +new Vector3(box.bounds.extents.x,0), Vector2.down * (box.bounds.extents.y + distance));
+        Debug.DrawRay(box.bounds.center - new Vector3(box.bounds.extents.x, 0), Vector2.down * (box.bounds.extents.y + distance));
+        Debug.DrawRay(box.bounds.center + new Vector3(box.bounds.extents.x, box.bounds.extents.y + distance), Vector2.down * (box.bounds.extents.y + distance));
+        Debug.Log(raycastHit.collider);
+        return raycastHit.collider != null;
     }
      
 
