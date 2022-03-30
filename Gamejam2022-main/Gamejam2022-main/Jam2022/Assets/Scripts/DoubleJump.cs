@@ -13,9 +13,9 @@ public class DoubleJump : MonoBehaviour
     public float moveSpeed = 5f;
     
     public float dec = 0.5f;
-    public float topSpeed = 20.0f;
-    public float airSpeed = 15F;
-    private float acc = 0.0934375f;
+    public float topSpeed = 10.0f;
+    public float airSpeed = 10F;
+    public float acc = 1;
     private float airAcc = 0.04671875f;
   
     private float gravity = 1;
@@ -23,9 +23,11 @@ public class DoubleJump : MonoBehaviour
     private float jumpDelay = 0.25f;
     private float delay = 0.25f;
     public float jumpCounter = 0;
+    public float velocity = 1f;
+    
     public GameObject player;
     public Transform startPosition;
- //   public Transform groundCheck;
+   public Transform roofCheck;
  //   public float groundCRadius;
    
 
@@ -37,13 +39,16 @@ public class DoubleJump : MonoBehaviour
   // public bool doubleJumpAllowed = false;
 //   public bool onTheGround = false;
     bool facingRight = true;
-    private BoxCollider2D box;
+    private PolygonCollider2D box;
     private Animator anim;
+   public float targetSpeed = 0;
+   public   float speedDifference = 0;
+    public float movement;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        box = GetComponent<BoxCollider2D>();
+        box = GetComponent<PolygonCollider2D>();
       //  anim = GetComponent<Animator>();
     }
     public bool ground1;
@@ -65,25 +70,16 @@ public class DoubleJump : MonoBehaviour
             ground1 = false;
           //  doubleJumpAllowed = true;
         }
-      /*  ground1 = Physics2D.OverlapCircle(groundCheck.position, groundCRadius, ground);
-        if (ground1)
-        {
-            jumpCounter = 0;
-        }
-       */
+     
         MoPhysics();
-        rb.velocity = new Vector2(dirX, rb.velocity.y);
-        if (rb.velocity.y == 0)
+        //  rb.velocity = new Vector2(dirX, rb.velocity.y);
+       bool isTouchingRoof = Physics.CheckSphere(roofCheck.position, 0.1f, ground);
+        if (isTouchingRoof)
         {
-            
-          //  onTheGround = true;
-          //  anim.SetBool("isJumping", false);
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
+            Debug.Log("Roof");
         }
-        else
-        {
-          //  onTheGround = false;
-           // anim.SetBool("isJumping", true);
-        }
+
 
 
         if (IsGrounded() && Input.GetButton("Jump"))
@@ -111,8 +107,18 @@ public class DoubleJump : MonoBehaviour
             //  doubleJumpAllowed = false;
         }
         dirX = Input.GetAxis("Horizontal") * moveSpeed;
+         targetSpeed = moveSpeed * dirX;
+       // Debug.Log(targetSpeed + " targetSpeed");
+        
+        speedDifference = targetSpeed - rb.velocity.x;
+      //  Debug.Log(speedDifference + " speedDifference");
+        //Change acc depending on situation
+        float accelaration = (Mathf.Abs(targetSpeed) > 0.01f) ? acc : dec;
+         movement = Mathf.Pow(Mathf.Abs(speedDifference) * accelaration, velocity) * Mathf.Sign(speedDifference);
 
-        if (Input.GetKey(KeyCode.A) && IsGrounded())
+        rb.AddForce(movement * Vector2.right);
+
+      /*  if (Input.GetKey(KeyCode.A) && IsGrounded())
         {
             if (moveSpeed < topSpeed)
             {
@@ -173,7 +179,7 @@ public class DoubleJump : MonoBehaviour
                     moveSpeed = airSpeed;
             }
         }
-
+      */
 
 
         if (dirX < 0 && facingRight)
@@ -203,6 +209,7 @@ public class DoubleJump : MonoBehaviour
     }
     [SerializeField] private LayerMask ground;
     public float distance = 0.3f;
+    public float halfDistance = 0.15f;
     private bool IsGrounded()
     {
 
@@ -220,9 +227,9 @@ public class DoubleJump : MonoBehaviour
             rayColor = Color.red;
         }
         Debug.DrawRay(box.bounds.center +new Vector3(box.bounds.extents.x,0), Vector2.down * (box.bounds.extents.y + distance));
-        Debug.DrawRay(box.bounds.center - new Vector3(box.bounds.extents.x, 0), Vector2.down * (box.bounds.extents.y + distance));
-        Debug.DrawRay(box.bounds.center + new Vector3(box.bounds.extents.x, box.bounds.extents.y + distance), Vector2.down * (box.bounds.extents.y + distance));
-        Debug.Log(raycastHit.collider);
+        //Debug.DrawRay(box.bounds.center - new Vector3(box.bounds.extents.x, 0), Vector2.down * (box.bounds.extents.y + halfDistance));
+        Debug.DrawRay(box.bounds.center + new Vector3(box.bounds.extents.x, box.bounds.extents.y + distance), Vector2.down * (box.bounds.extents.y + halfDistance));
+        //Debug.Log(raycastHit.collider);
         return raycastHit.collider != null;
     }
      
