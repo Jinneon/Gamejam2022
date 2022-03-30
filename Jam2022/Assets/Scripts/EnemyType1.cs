@@ -6,28 +6,20 @@ using UnityEngine.AI;
 public class EnemyType1 : Character
 {
     public Transform tr;
-    public LayerMask playerLayer;
     public float movePower = 1f;
 
-    private Character targetPlayer;
+    private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rig;
     //private Animator enemyAnimator;
-    private int moveFlag = 0; //0:Idle, 1:Left, 2:Right
+    private int moveFlag = 0; //-1:Left,0:Idle, 1:Right
     private bool isTracing;
     private GameObject traceTarget;
 
-    private bool hasTarget
-    {
-        get
-        {
-            if (targetPlayer != null && !targetPlayer.isCharacterDead)
-                return true;
-
-            return false;
-        }
-    }
 
     private void Awake()
     {
+        rig = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         //enemyAnimator = GetComponent<Animator>();
     }
 
@@ -48,6 +40,21 @@ public class EnemyType1 : Character
     private void Update()
     {
         Move();
+
+        Vector2 frontVec = new Vector2(rig.position.x + moveFlag * 0.2f, rig.position.y);
+        Debug.DrawRay(frontVec, Vector3.down, new Color(0, 1, 0));
+        RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Ground"));
+
+        if (rayHit.collider == null)
+            Turn();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            GameManager.GetInstance().even?.Invoke();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -55,7 +62,7 @@ public class EnemyType1 : Character
         if(other.gameObject.tag =="Player")
         {
             traceTarget = other.gameObject;
-
+            movePower = 3f;
             StopCoroutine("ChangeMove");
         }
     }
@@ -64,6 +71,7 @@ public class EnemyType1 : Character
         if(collision.gameObject.tag == "Player")
         {
             isTracing = true;
+            movePower = 3f;
             //enemyAnimator.SetBool("isMoving",true);
         }
     }
@@ -73,8 +81,17 @@ public class EnemyType1 : Character
         if(collision.gameObject.tag == "Player")
         {
             isTracing = false;
+            movePower = 1f;
             StartCoroutine("ChangeMove");
         }
+    }
+    void Turn()
+    {
+        moveFlag *= -1;
+        spriteRenderer.flipX = moveFlag == 1;
+
+        CancelInvoke();
+        Invoke("Move",0.5f);
     }
 
     void Move()
@@ -93,9 +110,9 @@ public class EnemyType1 : Character
         }
         else
         {
-            if (moveFlag == 1)
+            if (moveFlag == -1)
                 dist = "Left";
-            else if (moveFlag == 2)
+            else if (moveFlag == 1)
                 dist = "Right";
         }
 
@@ -114,7 +131,7 @@ public class EnemyType1 : Character
 
     private IEnumerator ChangeMove()
     {
-        moveFlag = Random.Range(0, 3);
+        moveFlag = Random.Range(-1, 1);
 
         if (moveFlag == 0)
         {
@@ -129,10 +146,4 @@ public class EnemyType1 : Character
 
         StartCoroutine("ChangeMove");
     }
-
-    public void Attack()
-    {
-
-    }
-
 }

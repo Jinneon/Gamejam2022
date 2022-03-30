@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : Character
 {
     public float playerHealth;
     public float howManyHearts;
@@ -11,16 +11,19 @@ public class PlayerHealth : MonoBehaviour
     public Sprite heart, noHeart, halfHeart;
     public List<int> uiCount;
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
-
+        playerHealth = CharacterHp = 3f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        playerHealth = CharacterHp;
+        Debug.Log("Player HP:" + playerHealth);
+
         if (playerHealth > howManyHearts)
         {
             playerHealth = howManyHearts;
@@ -43,57 +46,37 @@ public class PlayerHealth : MonoBehaviour
         }
         else if (playerHealth == 2.5)
         {
-            heartImages[0].sprite = halfHeart;
+            heartImages[0].sprite = heart;
             heartImages[1].sprite = heart;
-            heartImages[2].sprite = heart;
+            heartImages[2].sprite = halfHeart;
         }
         else if (playerHealth == 2)
         {
-            heartImages[0].sprite = noHeart;
+            heartImages[0].sprite = heart;
             heartImages[1].sprite = heart;
-            heartImages[2].sprite = heart;
+            heartImages[2].sprite = noHeart;
         }
         else if (playerHealth == 1.5)
         {
-            heartImages[0].sprite = noHeart;
+            heartImages[0].sprite = heart;
             heartImages[1].sprite = halfHeart;
-            heartImages[2].sprite = heart;
+            heartImages[2].sprite = noHeart;
         }
         else if (playerHealth == 1)
         {
-            heartImages[0].sprite = noHeart;
+            heartImages[0].sprite = heart;
             heartImages[1].sprite = noHeart;
-            heartImages[2].sprite = heart;
+            heartImages[2].sprite = noHeart;
         }
         else if (playerHealth == 0.5)
         {
-            heartImages[0].sprite = noHeart;
+            heartImages[0].sprite = halfHeart;
             heartImages[1].sprite = noHeart;
-            heartImages[2].sprite = halfHeart;
+            heartImages[2].sprite = noHeart;
         }
         else if (playerHealth == 0)
         {
-            heartImages[2].sprite = noHeart;
-        }
-
-
-
-
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            playerHealth += 0.5f;
-            Debug.Log(playerHealth);
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            playerHealth--;
-            Debug.Log(playerHealth);
-        }
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            playerHealth -= 0.5f;
+            heartImages[0].sprite = noHeart;
         }
     }
-
 }

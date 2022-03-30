@@ -23,16 +23,7 @@ public class Character : MonoBehaviour
     {
         Hp -= damage;
 
-        if (Hp <= 0 && !isDead)
-            Die();
-
-    }
-
-    public virtual void Die()
-    {
-        if(isDead)
-        {
-            //run dead animation
-        }
+        if (Hp <= 0)
+            isDead = true;
     }
 }
