@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float playerHealth;
-    public float howManyHearts;
+    public int playerHealth;
+    public int howManyHearts;
     public Image[] heartImages;
-    public Sprite heart, noHeart, halfHeart;
+    public Sprite heart, noHeart;
     public List<int> uiCount;
    
     [SerializeField] private Color myColor;
@@ -21,68 +21,37 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerHealth > howManyHearts)
+        if(playerHealth > howManyHearts)
         {
             playerHealth = howManyHearts;
         }
-        if (playerHealth == 0)
+
+        for(int i = 0; i < heartImages.Length; i++)
         {
-            playerHealth = 0;
-            Debug.Log("Game over");
+            if(i < playerHealth)
+            {
+                heartImages[i].sprite = heart;
+            }
+            else
+            {
+
+
+                heartImages[i].sprite = noHeart;
+               
+            }
+
+            if(i < howManyHearts)
+            {
+                heartImages[i].enabled = true;
+            }
+            else
+            {
+                heartImages[i].enabled = false;
+            }
         }
-
-       
-
-            // Debug.Log(i + " playerheart is " + playerHealth);
-            if (playerHealth  == 3)
-            {
-                heartImages[0].sprite = heart;
-                heartImages[1].sprite = heart;
-                heartImages[2].sprite = heart;
-
-            }
-            else if(playerHealth == 2.5)
-            {
-                heartImages[0].sprite = halfHeart;
-            heartImages[1].sprite = heart;
-            heartImages[2].sprite = heart;
-        }
-            else if(playerHealth == 2)
-            {
-                heartImages[0].sprite = noHeart;
-            heartImages[1].sprite = heart;
-            heartImages[2].sprite = heart;
-        }
-            else if (playerHealth == 1.5)
-            {
-            heartImages[0].sprite = noHeart;
-                heartImages[1].sprite = halfHeart;
-            heartImages[2].sprite = heart;
-            }
-            else if (playerHealth == 1)
-            {
-            heartImages[0].sprite = noHeart;
-                heartImages[1].sprite = noHeart;
-            heartImages[2].sprite = heart;
-            }
-            else if (playerHealth == 0.5)
-            {
-            heartImages[0].sprite = noHeart;
-            heartImages[1].sprite = noHeart;
-            heartImages[2].sprite =  halfHeart;
-            }
-           else if(playerHealth == 0)
-            {
-                heartImages[2].sprite = noHeart;
-            }
-
-
-
-
-        
         if (Input.GetKeyDown(KeyCode.E))
         {
-            playerHealth += 0.5f ;
+            playerHealth++;
             Debug.Log(playerHealth);
         }
         if (Input.GetKeyDown(KeyCode.B))
@@ -90,11 +59,6 @@ public class PlayerHealth : MonoBehaviour
             playerHealth--;
             Debug.Log(playerHealth);
         }
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            playerHealth -= 0.5f;
-        }
-    }
         
+    }
 }
-

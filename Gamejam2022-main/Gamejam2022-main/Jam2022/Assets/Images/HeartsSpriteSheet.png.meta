@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bae8b67e781153f40b38983aa143a5c7
+guid: 6e16b1933bf0acc438f68ea6722ba5a3
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -11,6 +11,15 @@ TextureImporter:
   - first:
       213: 2167289561786739862
     second: HeartsSpriteSheet_2
+  - first:
+      213: -1984027811358255540
+    second: HeartsSpriteSheet_3
+  - first:
+      213: -1181002851472662320
+    second: HeartsSpriteSheet_4
+  - first:
+      213: 3386852766500612922
+    second: HeartsSpriteSheet_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -77,7 +86,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -89,7 +98,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -101,7 +110,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,12 +124,12 @@ TextureImporter:
       name: HeartsSpriteSheet_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 104
-        width: 21
-        height: 20
-      alignment: 9
-      pivot: {x: 0.4584832, y: 0.51542014}
+        x: 14
+        y: 153
+        width: 27
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -136,10 +145,10 @@ TextureImporter:
       name: HeartsSpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 70
-        y: 153
-        width: 21
-        height: 20
+        x: 68
+        y: 151
+        width: 26
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,10 +166,10 @@ TextureImporter:
       name: HeartsSpriteSheet_2
       rect:
         serializedVersion: 2
-        x: 18
-        y: 154
-        width: 19
-        height: 19
+        x: 13
+        y: 174
+        width: 17
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,6 +179,69 @@ TextureImporter:
       bones: []
       spriteID: 69ce5b7af52c31e10800000000000000
       internalID: 2167289561786739862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeartsSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 175
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c46de77a7315774e0800000000000000
+      internalID: -1984027811358255540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeartsSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 103
+        width: 25
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d0af3fe92c3c9fe0800000000000000
+      internalID: -1181002851472662320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HeartsSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 122
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3b61d595a4800f20800000000000000
+      internalID: 3386852766500612922
       vertices: []
       indices: 
       edges: []
