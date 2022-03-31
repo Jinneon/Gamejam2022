@@ -61,6 +61,13 @@ public class EnemyType2 : Character
 
         CheckTpCoolDown();
     }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            GameManager.GetInstance().even?.Invoke();
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -92,11 +99,14 @@ public class EnemyType2 : Character
         {
             isTracing = false;
             StartCoroutine("ChangeMove");
+            movePower = 1f;
         }
     }
 
     void Teleportation()
     {
+        movePower = 3f;
+
         if (moveFlag == 1)
             tpPos.x = traceTarget.transform.position.x - 1.7f;
         if(moveFlag == -1)
