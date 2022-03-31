@@ -48,6 +48,13 @@ public class EnemyType1 : Character
         if (rayHit.collider == null)
             Turn();
     }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            GameManager.GetInstance().even?.Invoke();
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

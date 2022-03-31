@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject player;
     public PlayerHealth ph;
     public Text gameoverText;
     public UnityEvent even;
@@ -26,9 +25,8 @@ public class GameManager : MonoBehaviour
     {
         if (ph.isCharacterDead)
         {
+            ph.heartImages[0].sprite = ph.noHeart;
             gameoverText.gameObject.SetActive(true);
-            player.SetActive(false);
-            Time.timeScale = 0;
         }
     }
 }
