@@ -22,7 +22,7 @@ public class PlayerHealth : Character
     void Update()
     {
         playerHealth = CharacterHp;
-        Debug.Log("Player HP:" + playerHealth);
+     //   Debug.Log("Player HP:" + playerHealth);
 
         if (playerHealth > howManyHearts)
         {

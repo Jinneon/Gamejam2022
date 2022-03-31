@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7740964854744292243}
   - component: {fileID: 7740964854744292241}
   - component: {fileID: 7740964854744292240}
+  - component: {fileID: 1551507767868017120}
   m_Layer: 6
   m_Name: BackgroundTiles (2)
   m_TagString: Tile
@@ -109,6 +110,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &1551507767868017120
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7740964854744292242}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: d90613ebf9a870d4fb5068249957a67c, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7740964854938943742
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,6 +142,7 @@ GameObject:
   - component: {fileID: 7740964854938943743}
   - component: {fileID: 7740964854938943741}
   - component: {fileID: 7740964854938943740}
+  - component: {fileID: 1813232949105064222}
   m_Layer: 6
   m_Name: BackgroundTiles
   m_TagString: Tile
@@ -218,6 +241,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &1813232949105064222
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7740964854938943742}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: d90613ebf9a870d4fb5068249957a67c, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7740964855662376359
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,6 +273,7 @@ GameObject:
   - component: {fileID: 7740964855662376356}
   - component: {fileID: 7740964855662376354}
   - component: {fileID: 7740964855662376357}
+  - component: {fileID: 3077768027917430631}
   m_Layer: 6
   m_Name: BackgroundTiles (1)
   m_TagString: Tile
@@ -327,6 +372,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &3077768027917430631
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7740964855662376359}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: d90613ebf9a870d4fb5068249957a67c, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7740964855976522565
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,6 +404,7 @@ GameObject:
   - component: {fileID: 7740964855976522562}
   - component: {fileID: 7740964855976522560}
   - component: {fileID: 7740964855976522563}
+  - component: {fileID: 310544324525316081}
   m_Layer: 6
   m_Name: BackgroundTiles (3)
   m_TagString: Tile
@@ -436,6 +503,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &310544324525316081
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7740964855976522565}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: d90613ebf9a870d4fb5068249957a67c, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7740964856175201704
 GameObject:
   m_ObjectHideFlags: 0

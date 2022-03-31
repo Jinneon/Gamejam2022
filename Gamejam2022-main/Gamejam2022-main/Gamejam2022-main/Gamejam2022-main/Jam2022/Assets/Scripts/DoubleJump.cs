@@ -52,6 +52,8 @@ public class DoubleJump : MonoBehaviour
         anim = GetComponent<Animator>();
     }
     public bool ground1;
+    public float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
     // Update is called once per frame
     void Update()
     {
@@ -61,14 +63,25 @@ public class DoubleJump : MonoBehaviour
         }
         if (IsGrounded())
         {
+            coyoteTimeCounter = coyoteTime;
             ground1 = true;
             jumpCounter = 0;
             
         }
         else
         {
+            if (jumpCounter == 0)
+            {
+                jumpCounter = 1;
+            }
+            
             ground1 = false;
+            coyoteTimeCounter -= Time.deltaTime;
           //  doubleJumpAllowed = true;
+        }
+        if(jumpCounter == 1)
+        {
+            Debug.Log("1");
         }
      
         MoPhysics();
@@ -79,107 +92,135 @@ public class DoubleJump : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, 0f);
             Debug.Log("Roof");
         }
-
-
-
-        if (IsGrounded() && Input.GetButton("Jump"))
+        if(Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
-
-           // anim.SetTrigger("Jump");
-            Jump();
+            coyoteTimeCounter = 0f;
         }
-        else if (Input.GetButtonDown("Jump") && IsGrounded() == false)
+        if(jumpCounter == 1)
         {
-            
-            if(jumpCounter <= 1)
-            {
-                Jump();
-            }
-            else
-            {
-                Debug.Log("Can jump only once");
-            }
-               
-         //   doubleJumpAllowed = false;
-
-
-            //    anim.SetBool("isJumping", true);
-            //  doubleJumpAllowed = false;
+            coyoteTimeCounter = 5;
+            Debug.Log(coyoteTimeCounter);
         }
-        dirX = Input.GetAxis("Horizontal") * moveSpeed;
-         targetSpeed = moveSpeed * dirX;
-       // Debug.Log(targetSpeed + " targetSpeed");
         
-        speedDifference = targetSpeed - rb.velocity.x;
-      //  Debug.Log(speedDifference + " speedDifference");
-        //Change acc depending on situation
-        float accelaration = (Mathf.Abs(targetSpeed) > 0.01f) ? acc : dec;
-         movement = Mathf.Pow(Mathf.Abs(speedDifference) * accelaration, velocity) * Mathf.Sign(speedDifference);
 
-        rb.AddForce(movement * Vector2.right);
 
-      /*  if (Input.GetKey(KeyCode.A) && IsGrounded())
-        {
-            if (moveSpeed < topSpeed)
+        // WAS IsGrounded()
+      
+           if (coyoteTimeCounter > 0F && Input.GetButtonDown("Jump") && jumpCounter != 2)
             {
-                moveSpeed += acc;
-
-
-
+                
+            Debug.Log("yo");
+                if (jumpCounter <= 1)
+                {
+                    Jump();
+                }
+                else
+                {
+                    Debug.Log("Can jump only once");
+                }
             }
-
-        }
-        else if (Input.GetKeyUp(KeyCode.A))
-        {
-            moveSpeed -= dec;
-           // StartCoroutine(Decelaration());
-        }
-
-        if (Input.GetKey(KeyCode.A) && IsGrounded() == false)
-        {
-            if (moveSpeed < topSpeed)
+            if (Input.GetButtonDown("Jump") && IsGrounded() == false && jumpCounter != 2)
             {
-                moveSpeed += airAcc;
-                if (moveSpeed >= airSpeed)
-                    moveSpeed = airSpeed;
+            Debug.Log("yo1");
+               
+                if (jumpCounter <= 1)
+                {
+                    Jump();
+                }
+                else
+                {
+                    Debug.Log("Can jump only once");
+                }
+
+                //   doubleJumpAllowed = false;
+
+
+                //    anim.SetBool("isJumping", true);
+                //  doubleJumpAllowed = false;
             }
-        }
+            dirX = Input.GetAxis("Horizontal") * moveSpeed;
+             targetSpeed = moveSpeed * dirX;
+           // Debug.Log(targetSpeed + " targetSpeed");
+
+            speedDifference = targetSpeed - rb.velocity.x;
+          //  Debug.Log(speedDifference + " speedDifference");
+            //Change acc depending on situation
+            float accelaration = (Mathf.Abs(targetSpeed) > 0.01f) ? acc : dec;
+             movement = Mathf.Pow(Mathf.Abs(speedDifference) * accelaration, velocity) * Mathf.Sign(speedDifference);
+
+            rb.AddForce(movement * Vector2.right);
+
+            /*  if (Input.GetKey(KeyCode.A) && IsGrounded())
+              {
+                  if (moveSpeed < topSpeed)
+                  {
+                      moveSpeed += acc;
 
 
 
-        IEnumerator Decelaration()
+                  }
+
+              }
+              else if (Input.GetKeyUp(KeyCode.A))
+              {
+                  moveSpeed -= dec;
+                 // StartCoroutine(Decelaration());
+              }
+
+              if (Input.GetKey(KeyCode.A) && IsGrounded() == false)
+              {
+                  if (moveSpeed < topSpeed)
+                  {
+                      moveSpeed += airAcc;
+                      if (moveSpeed >= airSpeed)
+                          moveSpeed = airSpeed;
+                  }
+              }
+
+
+
+              IEnumerator Decelaration()
+              {
+                  Debug.Log("Now");
+                  yield return new WaitForSeconds(delay);
+                  moveSpeed = 5f;
+              }
+
+              if (Input.GetKey(KeyCode.D) && IsGrounded())
+              {
+                  if (moveSpeed < topSpeed)
+                  {
+                      moveSpeed += acc;
+                      if (moveSpeed >= topSpeed)
+                          moveSpeed = topSpeed;
+                  }
+
+              }
+              else if (Input.GetKeyUp(KeyCode.D))
+              {
+                  moveSpeed -= dec;
+               //   StartCoroutine(Decelaration());
+
+              }
+              if (Input.GetKey(KeyCode.D) && IsGrounded() == false)
+              {
+                  if (moveSpeed < topSpeed)
+                  {
+                      moveSpeed += airAcc;
+                      if (moveSpeed >= airSpeed)
+                          moveSpeed = airSpeed;
+                  }
+              }
+            */
+        if (rb.velocity.y < 0)
         {
-            Debug.Log("Now");
-            yield return new WaitForSeconds(delay);
-            moveSpeed = 5f;
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMult - 1) * Time.deltaTime;
+        
         }
-
-        if (Input.GetKey(KeyCode.D) && IsGrounded())
+        else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
         {
-            if (moveSpeed < topSpeed)
-            {
-                moveSpeed += acc;
-                if (moveSpeed >= topSpeed)
-                    moveSpeed = topSpeed;
-            }
-
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJump - 1) * Time.deltaTime;
         }
-        else if (Input.GetKeyUp(KeyCode.D))
-        {
-            moveSpeed -= dec;
-         //   StartCoroutine(Decelaration());
-
-        }
-        if (Input.GetKey(KeyCode.D) && IsGrounded() == false)
-        {
-            if (moveSpeed < topSpeed)
-            {
-                moveSpeed += airAcc;
-                if (moveSpeed >= airSpeed)
-                    moveSpeed = airSpeed;
-            }
-        }
-      */
 
 
         if (dirX < 0 && facingRight)
@@ -232,14 +273,30 @@ public class DoubleJump : MonoBehaviour
         //Debug.Log(raycastHit.collider);
         return raycastHit.collider != null;
     }
-     
+    float fallMult; float lowJump;
+    
 
     void Jump()
     {
-        jumpCounter += 1;
+       jumpCounter++;
+        
+        if(jumpCounter == 2)
+        {
+            Debug.Log("Cant jump");
             rb.velocity = new Vector2(rb.velocity.x, 0f);
             rb.velocity = Vector2.up * jumpForce;
-        anim.SetTrigger("Jump");
+
+            anim.SetTrigger("Jump");
+
+        }
+        else
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
+            rb.velocity = Vector2.up * jumpForce;
+
+            anim.SetTrigger("Jump");
+        }
+            
 
 
     }
