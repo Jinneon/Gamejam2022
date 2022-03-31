@@ -44,7 +44,8 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: a15e0d0a4e7f8f24cac9ec83e6ebea91, type: 3}
-    totalSpriteSurfaceArea: 57344
+    - {fileID: 2800000, guid: e030233cf8097f449bdb6ee9a5911df1, type: 3}
+    totalSpriteSurfaceArea: 64512
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -64,6 +65,13 @@ SpriteAtlas:
   - {fileID: -367122186117346591, guid: a15e0d0a4e7f8f24cac9ec83e6ebea91, type: 3}
   - {fileID: 5862085052623901287, guid: a15e0d0a4e7f8f24cac9ec83e6ebea91, type: 3}
   - {fileID: -2666511994606611549, guid: a15e0d0a4e7f8f24cac9ec83e6ebea91, type: 3}
+  - {fileID: 5882605714785765649, guid: e030233cf8097f449bdb6ee9a5911df1, type: 3}
+  - {fileID: -6278287260640855973, guid: e030233cf8097f449bdb6ee9a5911df1, type: 3}
+  - {fileID: 1871969460502341507, guid: e030233cf8097f449bdb6ee9a5911df1, type: 3}
+  - {fileID: -3637316365436139153, guid: e030233cf8097f449bdb6ee9a5911df1, type: 3}
+  - {fileID: -8290916584471259044, guid: e030233cf8097f449bdb6ee9a5911df1, type: 3}
+  - {fileID: -6901600401917915840, guid: e030233cf8097f449bdb6ee9a5911df1, type: 3}
+  - {fileID: 139398476604474142, guid: e030233cf8097f449bdb6ee9a5911df1, type: 3}
   m_PackedSpriteNamesToIndex:
   - BG-sunset-sky-tileset_13
   - BG-sunset-sky-tileset_10
@@ -79,6 +87,13 @@ SpriteAtlas:
   - BG-sunset-sky-tileset_9
   - BG-sunset-sky-tileset_8
   - BG-sunset-sky-tileset_12
+  - SandTileset_6
+  - SandTileset_4
+  - SandTileset_5
+  - SandTileset_2
+  - SandTileset_3
+  - SandTileset_0
+  - SandTileset_1
   m_RenderDataMap: {}
   m_Tag: New Sprite Atlas
   m_IsVariant: 0
