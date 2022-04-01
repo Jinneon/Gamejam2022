@@ -1588,6 +1588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 1971323770}
+  sceneToLoad: SampleScene
 --- !u!1 &1139095355
 GameObject:
   m_ObjectHideFlags: 0

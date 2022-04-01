@@ -27,6 +27,7 @@ public class PlayerMove : MonoBehaviour
     public GameObject beachBall;
     public Transform beachPosition;
     public Vector3 respawnPosition;
+    public PlayerHealth playerhp;
     // Start is called before the first frame update
     void Start()
     {
@@ -93,6 +94,7 @@ public class PlayerMove : MonoBehaviour
     {
         if(collision.tag == "GameOver")
         {
+            playerhp.OnDamage(0.5f);
             transform.position = respawnPosition;
         }
         else if(collision.tag == "CheckPoint")

@@ -26,6 +26,15 @@ public class PlayerHealth : Character
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("--");
+            CharacterHp -= 0.5f;
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            CharacterHp += 0.5f;
+        }
         playerHealth = CharacterHp;
      //   Debug.Log("Player HP:" + playerHealth);
 
@@ -123,6 +132,8 @@ public class PlayerHealth : Character
 
         yield return null;
     }
+
+ 
 
 
 
