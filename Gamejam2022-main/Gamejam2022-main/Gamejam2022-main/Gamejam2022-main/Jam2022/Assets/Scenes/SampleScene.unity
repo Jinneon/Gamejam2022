@@ -210,6 +210,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &62378793 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3863449862164156601, guid: 398c103967e52404aacd59b4a1669572, type: 3}
+  m_PrefabInstance: {fileID: 1294351418}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &82745089 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2701931439670878237, guid: 64982b7f55d23504eb6aefa727b52534, type: 3}
@@ -1168,6 +1173,30 @@ PrefabInstance:
       propertyPath: heartImages.Array.data[2]
       value: 
       objectReference: {fileID: 561751757}
+    - target: {fileID: 3863449862138348455, guid: 398c103967e52404aacd59b4a1669572, type: 3}
+      propertyPath: beachBall
+      value: 
+      objectReference: {fileID: 5281141931730396064, guid: b5a4de52b858eb548a51cc222625b620, type: 3}
+    - target: {fileID: 3863449862138348455, guid: 398c103967e52404aacd59b4a1669572, type: 3}
+      propertyPath: beachPosition
+      value: 
+      objectReference: {fileID: 62378793}
+    - target: {fileID: 3863449862138348455, guid: 398c103967e52404aacd59b4a1669572, type: 3}
+      propertyPath: respawnPosition.x
+      value: -11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863449862138348455, guid: 398c103967e52404aacd59b4a1669572, type: 3}
+      propertyPath: respawnPosition.y
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863449862164156600, guid: 398c103967e52404aacd59b4a1669572, type: 3}
+      propertyPath: m_Name
+      value: beachBallPos
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863449862164156601, guid: 398c103967e52404aacd59b4a1669572, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.321
+      objectReference: {fileID: 0}
     - target: {fileID: 4663645141599242889, guid: 398c103967e52404aacd59b4a1669572, type: 3}
       propertyPath: m_RootOrder
       value: 0
