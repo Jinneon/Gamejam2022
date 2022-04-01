@@ -10,7 +10,7 @@ public class EnemyType2 : Character
 
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rig;
-    //private Animator enemyAnimator;
+    private Animator enemyAnimator;
     private int moveFlag = 0; //-1:Left,0:Idle, 1:Right
     private bool isTracing;
     private GameObject traceTarget;
@@ -27,7 +27,7 @@ public class EnemyType2 : Character
         
         rig = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        //enemyAnimator = GetComponent<Animator>();
+       enemyAnimator = GetComponent<Animator>();
     }
 
 
@@ -89,7 +89,7 @@ public class EnemyType2 : Character
         if (collision.gameObject.tag == "Player")
         {
             isTracing = true;
-            //enemyAnimator.SetBool("isMoving",true);
+            enemyAnimator.SetBool("isMoving",true);
         }
     }
 
@@ -180,11 +180,11 @@ public class EnemyType2 : Character
 
         if (moveFlag == 0)
         {
-            //enemyAnimator.SetBool("isMoving", false);
+            enemyAnimator.SetBool("isMoving", false);
         }
         else
         {
-            //enemyAnimator.SetBool("isMoving", true);
+            enemyAnimator.SetBool("isMoving", true);
         }
 
         yield return new WaitForSeconds(5f);

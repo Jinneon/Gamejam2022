@@ -215,32 +215,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3863449862164156601, guid: 398c103967e52404aacd59b4a1669572, type: 3}
   m_PrefabInstance: {fileID: 1294351418}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &82745089 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2701931439670878237, guid: 64982b7f55d23504eb6aefa727b52534, type: 3}
-  m_PrefabInstance: {fileID: 1384277718}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &82745094 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7654999729783646882, guid: 64982b7f55d23504eb6aefa727b52534, type: 3}
-  m_PrefabInstance: {fileID: 1384277718}
-  m_PrefabAsset: {fileID: 0}
---- !u!58 &82745095
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 82745089}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 27.25
 --- !u!4 &142496484 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7740964856175201705, guid: e6f2d8d4fd1342947a7e5536be047cf0, type: 3}
@@ -484,21 +458,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1183922400, guid: 340c06ef3491d994aac82e7a469371ba, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2398896828819720428, guid: 340c06ef3491d994aac82e7a469371ba, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2398896828819720428, guid: 340c06ef3491d994aac82e7a469371ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.61
+      value: -6.88
       objectReference: {fileID: 0}
     - target: {fileID: 2398896828819720428, guid: 340c06ef3491d994aac82e7a469371ba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5858858
+      value: 1.83
       objectReference: {fileID: 0}
     - target: {fileID: 2398896828819720428, guid: 340c06ef3491d994aac82e7a469371ba, type: 3}
       propertyPath: m_LocalPosition.z
@@ -847,6 +817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 1619917395}
+  sceneToLoad: 
 --- !u!4 &932330713
 Transform:
   m_ObjectHideFlags: 0
@@ -1259,25 +1230,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1879889648496738653, guid: 64982b7f55d23504eb6aefa727b52534, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 2701931439670878237, guid: 64982b7f55d23504eb6aefa727b52534, type: 3}
       propertyPath: m_Name
-      value: Enemy2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2849643454455253426, guid: 64982b7f55d23504eb6aefa727b52534, type: 3}
-      propertyPath: m_AutoTiling
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6012104806398039077, guid: 64982b7f55d23504eb6aefa727b52534, type: 3}
-      propertyPath: tr
-      value: 
-      objectReference: {fileID: 82745094}
-    - target: {fileID: 6012104806398039077, guid: 64982b7f55d23504eb6aefa727b52534, type: 3}
-      propertyPath: traceCollider
-      value: 
+      value: EnemyTeleport
       objectReference: {fileID: 0}
     - target: {fileID: 7654999729783646882, guid: 64982b7f55d23504eb6aefa727b52534, type: 3}
       propertyPath: m_RootOrder
