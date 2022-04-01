@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - Catfood
   - Bullet
+  - GameOver
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
