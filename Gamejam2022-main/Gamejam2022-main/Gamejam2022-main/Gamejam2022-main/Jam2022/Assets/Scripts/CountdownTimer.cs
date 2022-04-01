@@ -38,8 +38,6 @@ public class CountdownTimer : MonoBehaviour
         }
     }
 
-    
-
     private void GameOver()
     {
         SceneManager.LoadScene(0);

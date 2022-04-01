@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2d8e45cf5f7e7468743a296e65f96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriterenderer: {fileID: 0}
   playerHealth: 3
   howManyHearts: 3
   heartImages:
@@ -286,12 +287,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4663645141599242894}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de7734dfc6446a243b74c43dc7fa304c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  matWhite: {fileID: 0}
+  playerhp: {fileID: 0}
 --- !u!95 &7098505262074541590
 Animator:
   serializedVersion: 3
