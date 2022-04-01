@@ -24,6 +24,8 @@ public class PlayerMove : MonoBehaviour
     private bool onGround;
     bool facingRight = true;
     private Animator anim;
+    public GameObject beachBall;
+    public Transform beachPosition;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,12 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            Debug.Log("Beachball");
+            Instantiate(beachBall, beachPosition.transform.position, transform.rotation);
+
+        }
         direction.x = input.RetrieveMoveInput();
         desiredVelocity = new Vector2(direction.x, 0f) * Mathf.Max(maxSpeed - ground.GetFriction(), 0f);
         if (direction.x < 0 && facingRight)
