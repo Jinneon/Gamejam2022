@@ -26,12 +26,14 @@ public class PlayerMove : MonoBehaviour
     private Animator anim;
     public GameObject beachBall;
     public Transform beachPosition;
+    public Vector3 respawnPosition;
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         ground = GetComponent<Ground>();
         anim = GetComponent<Animator>();
+        transform.position = respawnPosition;
     }
 
     // Update is called once per frame
@@ -86,4 +88,18 @@ public class PlayerMove : MonoBehaviour
 
         body.velocity = velocity;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "GameOver")
+        {
+            transform.position = respawnPosition;
+        }
+        else if(collision.tag == "CheckPoint")
+        {
+            respawnPosition = transform.position;
+        }
+    }
+
+
 }
