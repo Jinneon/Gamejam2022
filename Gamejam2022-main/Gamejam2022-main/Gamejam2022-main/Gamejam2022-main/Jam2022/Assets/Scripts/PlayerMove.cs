@@ -101,6 +101,10 @@ public class PlayerMove : MonoBehaviour
         {
             respawnPosition = transform.position;
         }
+        else if (collision.tag == "Bullet")
+        {
+            playerhp.OnDamage(0.5f);
+        }
     }
 
 
