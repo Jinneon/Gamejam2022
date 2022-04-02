@@ -18,11 +18,13 @@ public class Jump : MonoBehaviour
     private float defaultGravityScale;
     private bool desiredJump;
     private bool onGround;
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         ground = GetComponent<Ground>();
+        anim = GetComponent<Animator>();
 
         defaultGravityScale = 1f;
     }
@@ -48,7 +50,7 @@ public class Jump : MonoBehaviour
         else if(rb.velocity.y < 0)
         {
             rb.gravityScale = downwardMultiplier;
-            Debug.Log("Down");
+          //  Debug.Log("Down");
         }
         else if (rb.velocity.y == 0)
         {
@@ -61,6 +63,7 @@ public class Jump : MonoBehaviour
     {
         if(onGround || jumpCounter < maxJumps)
         {
+            anim.SetTrigger("Jump");
             jumpCounter += 1;
             float jumpSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * jumpHeight);
             if(velocity.y > 0f)

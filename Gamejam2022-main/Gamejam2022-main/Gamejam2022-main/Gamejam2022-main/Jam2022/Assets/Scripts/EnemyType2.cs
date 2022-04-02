@@ -16,7 +16,7 @@ public class EnemyType2 : Character
     private GameObject traceTarget;
 
     private float dist;
-    private float tpRange = 4f;
+    private float tpRange = 8f;
     private float tpDelay = 5f;
     private float curTpTime;
     private bool bTeleport;
@@ -52,8 +52,8 @@ public class EnemyType2 : Character
         Debug.DrawRay(frontVec, Vector3.down, new Color(0, 1, 0));
         RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Ground"));
 
-        if (rayHit.collider == null && rayHit.collider.tag != "Stair")
-            Turn();
+      /*  if (rayHit.collider == null && rayHit.collider.tag != "Stair")
+            Turn();*/
 
         if (dist <= tpRange && bTeleport && traceTarget != null)
             Teleportation();

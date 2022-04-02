@@ -11,6 +11,8 @@ TagManager:
   - GameOver
   - CheckPoint
   - Spkie
+  - Goal
+  - Spike
   layers:
   - Default
   - TransparentFX

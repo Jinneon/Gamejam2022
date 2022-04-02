@@ -45,8 +45,8 @@ public class EnemyType1 : Character
         Debug.DrawRay(frontVec, Vector3.down, new Color(0, 1, 0));
         RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Ground"));
 
-        if (rayHit.collider == null && rayHit.collider.tag != "Stair")
-            Turn();
+      /*  if (rayHit.collider == null && rayHit.collider.tag != "Stair")
+            Turn();*/
     }
     private void OnCollisionStay2D(Collision2D collision)
     {

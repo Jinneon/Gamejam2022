@@ -14,7 +14,6 @@ public class GuiManager : MonoBehaviour
         SceneManager.LoadScene(sceneToLoad);
         
     }
-
     public void onClickOption()
     {
         panel.SetActive(true);
@@ -29,5 +28,11 @@ public class GuiManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             onClickOption();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Goal")
+            SceneManager.LoadScene(sceneToLoad);
     }
 }
