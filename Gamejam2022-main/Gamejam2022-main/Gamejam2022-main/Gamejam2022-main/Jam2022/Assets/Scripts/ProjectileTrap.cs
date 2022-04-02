@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProjectileTrap : MonoBehaviour
 {
-    public float speed;
+ 
    
     private float timeBtwShots;
     public float startTimeBtwShots;
@@ -19,9 +19,10 @@ public class ProjectileTrap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Quaternion target = Quaternion.Euler(0, 0, 90);
         if (timeBtwShots <= 0)
         {
-            Instantiate(projectile, transform.position, Quaternion.identity);
+            Instantiate(projectile, transform.position, target);
             timeBtwShots = startTimeBtwShots;
         }
         else

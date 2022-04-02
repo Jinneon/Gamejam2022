@@ -11,6 +11,7 @@ TagManager:
   - GameOver
   - CheckPoint
   - Spkie
+  - Goal
   layers:
   - Default
   - TransparentFX

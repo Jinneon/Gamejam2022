@@ -22,6 +22,7 @@ public class Projectile : MonoBehaviour
         position = new Vector2(position.x + -speed * Time.deltaTime, position.y);
 
         transform.position = position;
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
