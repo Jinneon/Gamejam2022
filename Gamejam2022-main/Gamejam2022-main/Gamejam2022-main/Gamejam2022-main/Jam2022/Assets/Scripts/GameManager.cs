@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public PlayerHealth ph;
@@ -27,6 +27,16 @@ public class GameManager : MonoBehaviour
         {
             ph.heartImages[0].sprite = ph.noHeart;
             gameoverText.gameObject.SetActive(true);
+            StartCoroutine(Reload());
         }
     }
+    IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(2f);
+        int scene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
+        Time.timeScale = 1;
+    }
+
+    
 }

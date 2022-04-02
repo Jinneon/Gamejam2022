@@ -69,10 +69,8 @@ GameObject:
   - component: {fileID: 4663645141599242888}
   - component: {fileID: 4663645141599242868}
   - component: {fileID: 3863449863450098872}
-  - component: {fileID: 4663645141599242895}
   - component: {fileID: 3863449862046024389}
   - component: {fileID: 3863449862046024441}
-  - component: {fileID: 3863449862046024384}
   - component: {fileID: 7098505262074541590}
   - component: {fileID: 3863449862138354782}
   - component: {fileID: 3863449862138354783}
@@ -191,40 +189,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!114 &4663645141599242895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4663645141599242894}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73898660d7365094282c266d7b1e4b33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 9
-  moveSpeed: 3
-  dec: 0.5
-  topSpeed: 10
-  airSpeed: 7
-  acc: 1
-  jumpCounter: 0
-  velocity: 1
-  player: {fileID: 4663645141599242894}
-  startPosition: {fileID: 0}
-  roofCheck: {fileID: 3863449862164156601}
-  fallMultiplier: 5
-  targetSpeed: 0
-  speedDifference: 0
-  movement: 0
-  ground1: 0
-  coyoteTime: 0.2
-  ground:
-    serializedVersion: 2
-    m_Bits: 64
-  distance: -0.13
-  halfDistance: 0.15
 --- !u!60 &3863449862046024389
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -280,20 +244,6 @@ MonoBehaviour:
   noHeart: {fileID: 6845121059260094121, guid: 6e16b1933bf0acc438f68ea6722ba5a3, type: 3}
   halfHeart: {fileID: -1181002851472662320, guid: 6e16b1933bf0acc438f68ea6722ba5a3, type: 3}
   uiCount: 
---- !u!114 &3863449862046024384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4663645141599242894}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de7734dfc6446a243b74c43dc7fa304c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  matWhite: {fileID: 0}
-  playerhp: {fileID: 0}
 --- !u!95 &7098505262074541590
 Animator:
   serializedVersion: 3
@@ -456,3 +406,7 @@ MonoBehaviour:
   maxSpeed: 5
   maxAcceleration: 20
   maxAirAccelaration: 20
+  beachBall: {fileID: 0}
+  beachPosition: {fileID: 0}
+  respawnPosition: {x: 0, y: 0, z: 0}
+  playerhp: {fileID: 0}

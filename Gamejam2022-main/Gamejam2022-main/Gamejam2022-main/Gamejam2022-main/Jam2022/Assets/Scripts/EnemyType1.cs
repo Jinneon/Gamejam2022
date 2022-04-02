@@ -10,7 +10,7 @@ public class EnemyType1 : Character
 
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rig;
-    //private Animator enemyAnimator;
+    private Animator enemyAnimator;
     private int moveFlag = 0; //-1:Left,0:Idle, 1:Right
     private bool isTracing;
     private GameObject traceTarget;
@@ -20,7 +20,7 @@ public class EnemyType1 : Character
     {
         rig = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        //enemyAnimator = GetComponent<Animator>();
+        enemyAnimator = GetComponent<Animator>();
     }
 
 
@@ -45,7 +45,7 @@ public class EnemyType1 : Character
         Debug.DrawRay(frontVec, Vector3.down, new Color(0, 1, 0));
         RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector3.down, 1, LayerMask.GetMask("Ground"));
 
-        if (rayHit.collider == null)
+        if (rayHit.collider == null && rayHit.collider.tag != "Stair")
             Turn();
     }
     private void OnCollisionStay2D(Collision2D collision)
@@ -79,7 +79,7 @@ public class EnemyType1 : Character
         {
             isTracing = true;
             movePower = 3f;
-            //enemyAnimator.SetBool("isMoving",true);
+            enemyAnimator.SetBool("isMoving",true);
         }
     }
 
@@ -95,7 +95,11 @@ public class EnemyType1 : Character
     void Turn()
     {
         moveFlag *= -1;
-        spriteRenderer.flipX = moveFlag == 1;
+
+        if (moveFlag == -1)
+            spriteRenderer.flipX = true;
+        if (moveFlag == 1)
+            spriteRenderer.flipX = false;
 
         CancelInvoke();
         Invoke("Move",0.5f);
@@ -125,11 +129,13 @@ public class EnemyType1 : Character
 
         if(dist=="Left")
         {
+            spriteRenderer.flipX = true;
             moveVelocity = Vector3.left;
         }
 
         else if(dist == "Right")
         {
+            spriteRenderer.flipX = false;
             moveVelocity = Vector3.right;
         }
 
@@ -142,11 +148,11 @@ public class EnemyType1 : Character
 
         if (moveFlag == 0)
         {
-            //enemyAnimator.SetBool("isMoving", false);
+            enemyAnimator.SetBool("isMoving", false);
         }
         else
         {
-            //enemyAnimator.SetBool("isMoving", true);
+            enemyAnimator.SetBool("isMoving", true);
         }
 
         yield return new WaitForSeconds(2f);

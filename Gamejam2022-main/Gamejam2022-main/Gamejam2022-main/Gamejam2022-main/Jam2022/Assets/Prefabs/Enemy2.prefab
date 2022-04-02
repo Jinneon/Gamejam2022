@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7654999729783646882}
   - component: {fileID: 2149993044915408615}
-  - component: {fileID: 2849643454455253426}
   - component: {fileID: 1879889648496738653}
   - component: {fileID: 6012104806398039077}
+  - component: {fileID: 82745095}
+  - component: {fileID: 2317222829604718485}
+  - component: {fileID: 82745090}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Untagged
@@ -29,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2701931439670878237}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.53, y: 4.75, z: 0}
-  m_LocalScale: {x: 0.1458534, y: 0.1458534, z: 0.1458534}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 4.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cb9ccd9ffe372f14d94c16915d8935d1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a73743e309a7873439f6021bc5ccafcd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,32 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2849643454455253426
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2701931439670878237}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.39, y: 9.97}
-    newSize: {x: 9.39, y: 9.97}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 9.39, y: 9.97}
-  m_EdgeRadius: 0
 --- !u!50 &1879889648496738653
 Rigidbody2D:
   serializedVersion: 4
@@ -131,7 +107,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &6012104806398039077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,5 +120,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95d14570d497ef499e52e0d5aa51303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tr: {fileID: 0}
+  tr: {fileID: 7654999729783646882}
   movePower: 1
+--- !u!58 &82745095
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2701931439670878237}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.88
+--- !u!61 &2317222829604718485
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2701931439670878237}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.038164526, y: -0.009251989}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.5, y: 0.5}
+    newSize: {x: 9.39, y: 9.97}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.33577675, y: 0.31495976}
+  m_EdgeRadius: 0
+--- !u!95 &82745090
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2701931439670878237}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e069e3d7dab214e478ad5def1dfe8ccb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

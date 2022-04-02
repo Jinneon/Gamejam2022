@@ -7,10 +7,12 @@ using UnityEngine;
 public class GuiManager : MonoBehaviour
 {
     public GameObject panel;
+    public string sceneToLoad;
 
     public void onClickStart()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(sceneToLoad);
+        
     }
 
     public void onClickOption()

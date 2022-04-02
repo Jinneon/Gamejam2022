@@ -48,7 +48,7 @@ public class FadeOut : MonoBehaviour
 
     IEnumerator FadeIn()
     {
-        Debug.Log("Yo");
+      //  Debug.Log("Yo");
   
        
         
@@ -58,7 +58,7 @@ public class FadeOut : MonoBehaviour
         r.material.color = c;
        
         yield return new WaitForSeconds(duration);
-        Debug.Log("0");
+      //  Debug.Log("0");
 
         c = r.material.color;
         c.a = 0f;
@@ -67,7 +67,7 @@ public class FadeOut : MonoBehaviour
 
 
         yield return new WaitForSeconds(appearAgainTime);
-        Debug.Log("100");
+   //     Debug.Log("100");
         c = r.material.color;
         c.a = 100f;
         r.material.color = c;
