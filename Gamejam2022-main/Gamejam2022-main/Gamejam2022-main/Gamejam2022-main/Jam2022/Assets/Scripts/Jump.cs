@@ -50,7 +50,7 @@ public class Jump : MonoBehaviour
         else if(rb.velocity.y < 0)
         {
             rb.gravityScale = downwardMultiplier;
-            Debug.Log("Down");
+          //  Debug.Log("Down");
         }
         else if (rb.velocity.y == 0)
         {
