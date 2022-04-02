@@ -25,8 +25,7 @@ public class PlayerMove : MonoBehaviour
     private bool onGround;
     bool facingRight = true;
     private Animator anim;
-    public GameObject beachBall;
-    public Transform beachPosition;
+   
     public Vector3 respawnPosition;
     public PlayerHealth playerhp;
     // Start is called before the first frame update
@@ -41,12 +40,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            Debug.Log("Beachball");
-            Instantiate(beachBall, beachPosition.transform.position, transform.rotation);
-
-        }
+       
         direction.x = input.RetrieveMoveInput();
         desiredVelocity = new Vector2(direction.x, 0f) * Mathf.Max(maxSpeed - ground.GetFriction(), 0f);
         if (direction.x < 0 && facingRight)
@@ -103,6 +97,10 @@ public class PlayerMove : MonoBehaviour
             respawnPosition = transform.position;
         }
         else if (collision.tag == "Bullet")
+        {
+            playerhp.OnDamage(0.5f);
+        }
+        else if (collision.tag == "Spike")
         {
             playerhp.OnDamage(0.5f);
         }

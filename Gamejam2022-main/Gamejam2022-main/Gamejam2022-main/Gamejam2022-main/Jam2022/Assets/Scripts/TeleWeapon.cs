@@ -12,6 +12,7 @@ public class TeleWeapon : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();//
+        StartCoroutine(DestroyProjectile());
     }
 
 
@@ -20,25 +21,22 @@ public class TeleWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*   Vector2 position = transform.position;
 
-           position = new Vector2(position.x + speed * Time.deltaTime, position.y);
-
-           transform.position = position;
-
-           Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 0));*/
         Vector2 position = transform.position;
 
 
         position = new Vector2(position.x + speed * Time.deltaTime, position.y);
 
         transform.position = position;
-
-
-
-        // { Destroy(gameObject); }
     }
 
- 
-   
+    IEnumerator DestroyProjectile()
+    {
+        yield return new WaitForSeconds(2.5f);
+        Destroy(gameObject);
+
+    }
+
+
+
 }

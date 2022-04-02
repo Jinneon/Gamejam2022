@@ -12,6 +12,7 @@ TagManager:
   - CheckPoint
   - Spkie
   - Goal
+  - Spike
   layers:
   - Default
   - TransparentFX

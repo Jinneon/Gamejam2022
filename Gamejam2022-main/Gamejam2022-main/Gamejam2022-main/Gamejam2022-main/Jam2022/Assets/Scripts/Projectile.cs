@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();//
+        StartCoroutine(DestroyProjectile());
     }
 
     // Update is called once per frame
@@ -36,9 +37,12 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject, 3f);
         }
     }
-    void DestroyProjectile()
+    IEnumerator DestroyProjectile()
     {
-
+        yield return new WaitForSeconds(2.5f);
         Destroy(gameObject);
+
     }
+    
+  
 }
