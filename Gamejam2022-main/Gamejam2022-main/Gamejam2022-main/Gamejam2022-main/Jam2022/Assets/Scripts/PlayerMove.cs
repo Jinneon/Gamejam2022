@@ -24,17 +24,27 @@ public class PlayerMove : MonoBehaviour
     private bool onGround;
     bool facingRight = true;
     private Animator anim;
+    public GameObject beachBall;
+    public Transform beachPosition;
+    public Vector3 respawnPosition;
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
         ground = GetComponent<Ground>();
         anim = GetComponent<Animator>();
+        transform.position = respawnPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            Debug.Log("Beachball");
+            Instantiate(beachBall, beachPosition.transform.position, transform.rotation);
+
+        }
         direction.x = input.RetrieveMoveInput();
         desiredVelocity = new Vector2(direction.x, 0f) * Mathf.Max(maxSpeed - ground.GetFriction(), 0f);
         if (direction.x < 0 && facingRight)
@@ -78,4 +88,18 @@ public class PlayerMove : MonoBehaviour
 
         body.velocity = velocity;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "GameOver")
+        {
+            transform.position = respawnPosition;
+        }
+        else if(collision.tag == "CheckPoint")
+        {
+            respawnPosition = transform.position;
+        }
+    }
+
+
 }
