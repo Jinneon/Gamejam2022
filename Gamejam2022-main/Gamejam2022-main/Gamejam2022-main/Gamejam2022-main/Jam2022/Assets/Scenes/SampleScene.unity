@@ -842,6 +842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 1619917395}
+  sceneToLoad: 
 --- !u!4 &932330713
 Transform:
   m_ObjectHideFlags: 0
