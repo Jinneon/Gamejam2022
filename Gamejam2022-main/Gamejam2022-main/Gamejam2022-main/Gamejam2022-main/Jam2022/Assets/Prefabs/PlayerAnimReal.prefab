@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 79007270746326304}
   - component: {fileID: 79007270746331865}
   - component: {fileID: 79007270746331864}
+  - component: {fileID: 871368256}
   m_Layer: 7
   m_Name: PlayerAnimReal
   m_TagString: Player
@@ -379,7 +380,31 @@ MonoBehaviour:
   maxSpeed: 5
   maxAcceleration: 20
   maxAirAccelaration: 15
-  beachBall: {fileID: 5281141931730396064, guid: b5a4de52b858eb548a51cc222625b620, type: 3}
-  beachPosition: {fileID: 79007271854508206}
-  respawnPosition: {x: 0, y: 0, z: 0}
+  respawnPosition: {x: 149, y: 2, z: 0}
   playerhp: {fileID: 79007270033349510}
+--- !u!114 &871368256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8376012594019046385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ac2cb7a203293442bddbae136f08c7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  triggerArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
