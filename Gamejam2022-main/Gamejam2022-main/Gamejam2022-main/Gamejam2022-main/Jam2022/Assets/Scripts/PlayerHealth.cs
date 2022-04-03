@@ -14,6 +14,7 @@ public class PlayerHealth : Character
 
     private bool invincibilityTime = false;
     private UnityEngine.Object flashParticle;
+    private Animator anim;
 
 
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class PlayerHealth : Character
     {
         playerHealth = CharacterHp = 3f;
         flashParticle = Resources.Load("FlashParticle");
+      anim =  GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -95,26 +97,35 @@ public class PlayerHealth : Character
 
     public override void OnDamage(float damage)
     {
+        anim.SetTrigger("Cat_Hit");
         if (!invincibilityTime)
         {
             CharacterHp -= damage;
 
             invincibilityTime = true;
-            StartCoroutine("iTime");
+            StartCoroutine(iTime());
         }
+    }
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(0.2f);
+     //   anim.SetBool("Cat_Hit", false);
     }
 
     public override void Die()
     {
         isCharacterDead = true;
         GameManager.GetInstance().even?.Invoke();
-        GameObject flash = (GameObject)Instantiate(flashParticle);
+        anim.SetBool("IsDead", true);
+      /*  GameObject flash = (GameObject)Instantiate(flashParticle);
         flash.transform.position = new Vector3(transform.position.x, transform.position.y + .3F, transform.position.z);
-        Destroy(gameObject);
+        Destroy(gameObject);*/
     }
 
     IEnumerator iTime()
     {
+      
+
         int countTime = 0;
 
         while(countTime <10)
