@@ -16,7 +16,7 @@ public class EnemyType2 : Character
     private GameObject traceTarget;
 
     private float dist;
-    private float tpRange = 8f;
+    private float tpRange = 5f;
     private float tpDelay = 5f;
     private float curTpTime;
     private bool bTeleport;
@@ -109,6 +109,8 @@ public class EnemyType2 : Character
         if (moveFlag == 1)
             tpPos.x = traceTarget.transform.position.x - 1.7f;
         if(moveFlag == -1)
+            tpPos.x = traceTarget.transform.position.x + 1.7f;
+        if (moveFlag == 0)
             tpPos.x = traceTarget.transform.position.x + 1.7f;
 
         tpPos.y = traceTarget.transform.position.y;
