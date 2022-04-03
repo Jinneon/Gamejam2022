@@ -13,6 +13,8 @@ TagManager:
   - Spkie
   - Goal
   - Spike
+  - Tutorial
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
