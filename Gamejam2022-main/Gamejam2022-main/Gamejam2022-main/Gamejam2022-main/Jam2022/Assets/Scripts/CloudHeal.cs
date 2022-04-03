@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CloudHeal : Character
 {
@@ -11,10 +12,12 @@ public class CloudHeal : Character
     public Image[] heartImages;
     public Sprite heart, noHeart, halfHeart;
     public List<int> uiCount;
+    public int hp = 3;
 
     private bool invincibilityTime = false;
     private UnityEngine.Object flashParticle;
     private Animator anim;
+    
 
 
     // Start is called before the first frame update
@@ -115,11 +118,19 @@ public class CloudHeal : Character
     public override void Die()
     {
         isCharacterDead = true;
-        GameManager.GetInstance().even?.Invoke();
+       // GameManager.GetInstance().even?.Invoke();
         anim.SetBool("IsDead", true);
+        StartCoroutine(Reload());
         /*  GameObject flash = (GameObject)Instantiate(flashParticle);
           flash.transform.position = new Vector3(transform.position.x, transform.position.y + .3F, transform.position.z);
           Destroy(gameObject);*/
+    }
+    IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(1.2f);
+        int scene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
+        Time.timeScale = 1;
     }
 
     IEnumerator iTime()

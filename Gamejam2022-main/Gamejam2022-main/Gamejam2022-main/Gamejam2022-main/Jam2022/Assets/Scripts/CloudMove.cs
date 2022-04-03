@@ -8,14 +8,16 @@ public class CloudMove : MonoBehaviour
    [SerializeField] private float speed;
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
-    public PlayerHealth playerhp;
+    public CloudHeal playerhp;
     public Vector3 respawnPosition;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         transform.position = respawnPosition;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
